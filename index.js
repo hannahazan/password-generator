@@ -9,7 +9,6 @@ const copy=document.getElementById("triggerCoppy");
 function generatePassword() {
   let data = [];
   let password = "";
-
   if (lowercase.checked) data.push(...dataLowercase);
   if (uppercase.checked) data.push(...dataUppercase);
   if (numbers.checked) data.push(...dataNumbers);
@@ -36,10 +35,11 @@ function copyPassword(){
   document.getElementById("generateButton2").id="generateButton"
   document.getElementById("triggerCoppy").className="coppyButton"
  
- 
 }
 
-
+function getvalue(){
+  document.getElementById('display-password-length').value=rangeValue.value
+}
 generateButton.addEventListener("click",generatePassword);
 copy.addEventListener("click",copyPassword)
-
+rangeValue.addEventListener("input", getvalue)
