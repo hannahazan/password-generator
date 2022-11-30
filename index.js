@@ -4,6 +4,7 @@ const dataNumbers = "0123456789";
 const dataSymbols = "$^*ùm!:;,&é\"'(-è_ç)";
 const rangeValue = document.getElementById("password-length");
 const passwordOutput = document.getElementById("password-output");
+const copy=document.getElementById("triggerCoppy");
 
 function generatePassword() {
   let data = [];
@@ -19,20 +20,26 @@ function generatePassword() {
     return;
   }
 
+
   for (i = 0; i < rangeValue.value; i++) {
     password += data[Math.floor(Math.random() * data.length)];
   }
-
   passwordOutput.value = password;
+  
+  document.getElementById("generateButton").id="generateButton2"
+  document.getElementById("triggerCoppy").className="coppyButton2"
 
+}
+function copyPassword(){
   passwordOutput.select();
   document.execCommand("copy");
-
-  generateButton.textContent = "Copié !";
-
-  setTimeout(() => {
-    generateButton.textContent = "Générer mot de passe";
-  }, 2000);
+  document.getElementById("generateButton2").id="generateButton"
+  document.getElementById("triggerCoppy").className="coppyButton"
+ 
+ 
 }
 
-generateButton.addEventListener("click", generatePassword);
+
+generateButton.addEventListener("click",generatePassword);
+copy.addEventListener("click",copyPassword)
+
